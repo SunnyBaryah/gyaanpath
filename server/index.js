@@ -6,11 +6,6 @@ import cors from "cors";
 
 dotenv.config();
 
-const instance = new Razorpay({
-  key_id: process.env.Razorpay_Key,
-  key_secret: process.env.Razorpay_Secret,
-});
-
 const app = express();
 
 // using middlewares
@@ -29,6 +24,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/uploads", express.static("uploads"));
+export const instance = new Razorpay({
+  key_id: process.env.Razorpay_Key,
+  key_secret: process.env.Razorpay_Secret,
+});
 
 // importing routes
 import userRoutes from "./routes/user.js";
@@ -49,4 +48,3 @@ connectDb()
 .catch((err) => {
     console.log("Mongo DB connection failed!! ", err);
 });
-module.exports = { instance };
