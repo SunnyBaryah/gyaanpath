@@ -35,7 +35,12 @@ app.use("/api", userRoutes);
 app.use("/api", courseRoutes);
 app.use("/api", adminRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-  connectDb();
+connectDb()
+.then(() => {
+    app.listen(port || 8000, () => {
+      console.log(`Server is running on port : ${port}`);
+    });
+  })
+.catch((err) => {
+    console.log("Mongo DB connection failed!! ", err);
 });
