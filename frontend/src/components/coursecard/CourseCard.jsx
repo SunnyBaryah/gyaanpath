@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { CourseData } from "../../context/CourseContext";
+import coverpic from "/onepic.jpg";
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const CourseCard = ({ course }) => {
   };
   return (
     <div className=" bg-[#F5F5F5] rounded-md py-4 px-2 flex flex-col justify-center items-center gap-5">
-      <img src={`${server}/${course.image}`} alt="" className="w-[100%] h-[120px] mx-auto rounded-md" />
+      <img src={coverpic} alt="" className="w-[100%] h-[120px] mx-auto rounded-md" />
       <h3 className="font-semibold text-2xl text-center">{course.title}</h3>
       <div className="flex flex-col gap-1 items-center justify-center">
         <p>Instructor- {course.createdBy}</p>
